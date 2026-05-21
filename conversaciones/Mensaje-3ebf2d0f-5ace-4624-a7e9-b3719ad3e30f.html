@@ -1,0 +1,1795 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mensaje 3ebf2d0f-5ace-4624-a7e9-b3719ad3e30f</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>* {
+    box-sizing: border-box;
+    flex: 0 1 auto;
+}
+html {
+    height: 100%;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444A52;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin: 0;
+}
+h4 {
+    width: 100%;
+    font-size: 18px;
+    margin-top: 11px;
+    margin-bottom: 11px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.conversation-details-container {
+    width: 100%;
+}
+.pc-form {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-direction: normal;
+    -box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    padding-bottom: 25px;
+}
+.form-group {
+    padding: 0px 25px;
+    width: 100%;
+}
+.conversation-metrics-header {
+    border-bottom: 1px solid #B8B8B8;
+}
+.details-row {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-direction: normal;
+    -box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-top: 10px;
+}
+.details-header {
+    font-weight: bold;
+    -webkit-flex: 1 0 50%;
+    -moz-flex: 1 0 50%;
+    -ms-flex: 1 0 50%;
+    flex: 1 0 50%;
+    max-width: 25%;
+}
+.details-value {
+    -webkit-flex: 1 0 50%;
+    -moz-flex: 1 0 50%;
+    -ms-flex: 1 0 50%;
+    flex: 1 0 50%;
+}
+.messages-message {
+    margin: 15px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.messages-message.agent .message-header {
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.message-receipt {
+    margin-left: auto;
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-body {
+    max-width: 70%;
+    display: flex;
+}
+.messages-message.customer .message-body {
+    flex-direction: row;
+}
+.messages-message.agent .message-body {
+    flex-direction: row-reverse;
+    margin-left: auto;
+    margin-right: 15px;
+}
+.message-user,
+.message-user-name {
+    white-space: nowrap;
+    margin-top: 15px;
+}
+.messages-message.customer .message-user {
+    margin-right: 15px;
+}
+.messages-message.agent .message-user {
+    margin-left: 15px;
+}
+.message-user-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.messages-message.customer .message-user-wrapper  {
+    margin-right: 15px;
+}
+.messages-message.agent .message-user-wrapper  {
+    margin-left: 15px;
+}
+.message-bubble {
+    min-height: 50px;
+    border-radius: 6px;
+    position: relative;
+    padding: 15px;
+}
+.messages-message.customer .message-bubble {
+    background-color: #faebd7;
+}
+.messages-message.agent .message-bubble {
+    background-color: #f0f8ff;
+}
+.messages-message.customer .tail {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #faebd7;
+    width: 10px;
+    position: absolute;
+    left: -20px;
+    top: 15px;
+}
+.messages-message.agent .tail {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid #f0f8ff;
+    width: 10px;
+    position: absolute;
+    right: -20px;
+    top: 15px;
+}
+.message-text-body {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    align-self: center;
+}
+.pull-right {
+    float: right!important;
+}
+.message-media-attachment-container {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    margin-top: 10px;
+}
+.expand-button {
+    padding: 6px 12px;
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #E1E1E1;
+    display: flex;
+    color: #2A60C8;
+    border-radius: 4px;
+    position: relative;
+    border-color: transparent;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-weight: 400;
+    margin-bottom: 0;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: initial;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    align-items: baseline;
+}
+.expand-button:hover span {
+    text-decoration: underline;
+}
+.expand-button span {
+    max-width: 60vw;
+    overflow-wrap: anywhere;
+}
+.expand-button .fa-caret-down {
+    margin-left: 4px;
+}
+.message-attachment {
+    vertical-align: middle;
+    padding: 10px;
+}
+audio.message-attachment {
+    min-width: 300px;
+    width: 100%;
+}
+.audio-error {
+    padding: 10px;
+}
+
+.expand-button.collapsed ~ :is(img, audio, .audio-error) {
+    display: none;
+}
+.expand-button.collapsed .fa-caret-down:before {
+    content: "\f0da";
+}
+.sticker {
+    width: 100px;
+}
+
+.quick-reply{
+    border-radius: 15px;
+}
+
+.message-reply-selection {
+    color: #b8b8b8;
+    font-style: italic;
+}
+
+.listpicker-reply-selection,
+.form-completed,
+.rsa-note{
+    color: #596373;
+    font-style: italic;
+}
+
+.formComponent-reply-wrapper {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.message-reply-wrapper {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.message-reply-wrapper .message-reply,
+.formComponent-reply-wrapper .message-reply{
+    display: flex;
+    border: 1px solid #ddd;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #e4e9f0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.message-reply-wrapper .message-reply .option,
+.formComponent-reply-wrapper .message-reply .option {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.message-reply-wrapper .message-reply.unselected-option,
+.formComponent-reply-wrapper .message-reply.unselected-option {
+    color: #0000ff7F;
+    background-color: #e4e9f07f;
+}
+
+.message-reply-wrapper .message-reply.message-reply-unselected {
+    opacity: 0.5;
+}
+
+.message-reply-wrapper .button-icon-phone {
+    font-size: 24px;
+}
+
+.message-reply-wrapper .button-icon-link {
+    padding: 5px;
+}
+
+.message-reply-wrapper .button-link {
+    text-decoration: none;
+}
+
+.fa-check {
+    margin-top: 5px;
+}
+
+.card-attachment {
+    border-radius: 10px 0px 0px 10px;
+    margin-right: 10px;
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.card {
+    min-height:100px;
+    position: relative;
+    margin: -15px;
+    display: flex;
+    min-width: 248px;
+    max-width: 348px;
+}
+
+.template {
+    height:auto;
+}
+
+.card-details {
+    max-width: 248px;
+}
+
+.cards-reply-wrapper {
+    max-width: 348px;
+}
+
+.card-title {
+    flex-direction: column;
+    flex: 1;
+    font-size: 12px;
+    line-height: 14px;
+    color: #444A52;
+    padding: 5px;
+    padding-top: 10px;
+    overflow-wrap: break-word;
+}
+
+.card-description {
+    flex-direction: column;
+    flex: 1;
+    font-size: 12px;
+    line-height: 14px;
+    color: #77828f;
+    padding: 5px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.card-wrapper:not(:first-child) .tail {
+    display: none;
+}
+
+.cards-wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #B8B8B8;
+}
+
+.message-event-wrapper{
+    border: 1px solid #B8B8B8;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #e4e9f0;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 12px;
+}
+
+.template-header-text {
+    color: #2E394C;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.template-footer-text {
+    font-size: 10px;
+    line-height: 10px;
+    padding-top: 10px;
+    color: #596373;
+    justify-content: flex-end;
+}
+
+.template-body-text{
+    color: #2E394C;
+    padding-top: 15px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: max-content;
+    max-width: 30vw;
+    white-space: normal;
+    word-break: break-word;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 4px 2px;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent lightgrey transparent;
+}
+
+.tooltip .tooltip-text::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
+.tooltip.top .tooltip-text {
+    bottom: 110%;
+    top: auto;
+}
+
+.tooltip.top .tooltip-text::after {
+    bottom: auto;
+    top: 100%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-color: lightgrey transparent transparent transparent;
+}
+
+.tooltip.top .tooltip-text::before {
+    bottom: auto;
+    top: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-color: white transparent transparent transparent;
+    z-index: 1;
+}
+
+.payment-title,
+.line-items,
+.shipping-options,
+.form-heading,
+.date-picker-heading,
+.rsa-heading{
+    padding-bottom: 5px;
+}
+
+/* Container for each form component with proper spacing */
+.component-container {
+    padding-bottom: 5px;
+}
+
+/* Indentation for selection options to align with text after numbering */
+.indented-selection {
+    margin-left: 15px;
+}
+
+.form-title,
+.date-picker-title{
+    color: #4F5157;
+}
+
+.rich-link {
+    .card-attachment {
+        margin: 0px;
+    }
+
+    .card-details {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .card-description {
+         padding: 0px;
+         display: flex;
+         justify-content: center;
+     }
+
+    .rich-link-header-text {
+        color: #444A52;
+        font-weight: bold;
+        line-height: 16px;
+    }
+
+    .rich-link-body-text {
+        color: #33383D;
+        line-height: 20px;
+    }
+
+    .rich-link-footer-text{
+        color: #596373;
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .option {
+        /* Wrap into multiple lines when url is overflowing the container */
+        overflow-wrap: anywhere;
+    }
+}</style>
+    <script>
+        function toggleElementCollapsed(elem) {
+            if (elem.classList.contains("collapsed")) {
+                elem.classList.remove("collapsed");
+            } else {
+                elem.classList.add("collapsed");
+            }
+        }
+
+        function handleAudioSourceError(sourceElement) {
+            const audioElement = sourceElement.parentElement;
+            if(audioElement && audioElement.dataset.errorHandled !== 'true') {
+                audioElement.insertAdjacentHTML('afterend',
+                    "<div class=\"audio-error\">La reproducción de audio no es compatible con su navegador o no se pudo reproducir el archivo.</div>"
+                );
+                audioElement.dataset.errorHandled = 'true';
+            }
+        }
+
+        function updateTooltipPosition(element) {
+            const rect = element.getBoundingClientRect();
+            const spaceBelow = window.innerHeight - rect.bottom;
+            if (spaceBelow < 100) {
+                element.classList.add('top');
+            } else {
+                element.classList.remove('top');
+            }
+        }
+
+        const locale = "es"
+        function documentListenerReady() {
+    document.addEventListener("DOMContentLoaded", () => {
+        const dateElements = document.querySelectorAll(".date");
+        const formatMaps = {
+            /**
+             * DateTime format options for "Fri, July 25, 2025 at 5:30:00 AM UTC" format
+             */
+            "SHORT_WEEKDAY_FULL_DATETIME_OPTIONS": {
+                weekday: "short",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                second: "2-digit",
+                timeZone: "UTC",
+                timeZoneName: "short"
+            },
+            /**
+             * DateTime format options for "5:30:00 AM" format
+             */
+            "MEDIUM_TIME_OPTIONS": {
+                timeStyle: "medium",
+                timeZone: "UTC"
+            },
+            /**
+             * DateTime format options for "05:30 AM" format
+             */
+            "SHORT_TIME_OPTIONS": {
+                hour: "2-digit",
+                minute: "2-digit",
+                timeZone: "UTC"
+            },
+            /**
+             * DateTime format options for "Friday, July 25, 2025" format
+             */
+            "FULL_DATE_OPTIONS": {
+                dateStyle:"full",
+                timeZone: "UTC"
+            },
+            /**
+             * DateTime format options for "Jul 25, 2025, 5:30:00 AM UTC" format
+             */
+            "MEDIUM_DATE_LONG_TIME_OPTIONS": {
+                dateStyle: "medium",
+                timeStyle: "long",
+                timeZone: "UTC"
+            },
+            /**
+             * DateTime format options for "July 25, 2025 at 05:30:00 AM UTC" format
+             */
+            "LONG_DATE_LONG_TIME_OPTIONS": {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                timeZone: "UTC",
+                timeZoneName: "short"
+            }
+        }
+        dateElements.forEach(el => {
+            const rawIsoDate = el.dataset.date;
+            const format = el.dataset.format;
+            if (rawIsoDate) {
+                const date = new Date(rawIsoDate);
+                if (isNaN(date.getTime())) return;
+                try{
+                    const formatted = new Intl.DateTimeFormat(locale, formatMaps[format]).format(date);
+                    el.textContent = formatted;
+                } catch (error) {
+                    el.textContent = rawIsoDate;
+                }
+            }
+        });
+    });
+}
+documentListenerReady();
+    </script>
+</head>
+
+                                                        <body>
+    
+<div class='conversation-details-container pc-form'>
+    <div class='form-group'>
+        <h4 class='conversation-metrics-header'>Detalles de interacción</h4>
+        <div class='details-row'>
+            <span class='details-header'>Tipo de interacción</span>
+            <span class='details-value'>Mensaje</span>
+        </div>
+        <div class='details-row'>
+            <span class='details-header'>Tipo de mensaje</span>
+            <span class='details-value'>Abrir</span>
+        </div>
+                <div class='details-row'>
+            <span class='details-header'>Hora de inicio</span>
+                            <span class='details-value date' data-date="2026-05-18T16:22:10.595Z" data-format="SHORT_WEEKDAY_FULL_DATETIME_OPTIONS">2026-05-18T16:22:10.595Z</span>
+                    </div>
+        <div class='details-row'>
+            <span class='details-header'>Hora de finalización</span>
+                            <span class='details-value date' data-date="2026-05-18T21:56:35.286Z" data-format="SHORT_WEEKDAY_FULL_DATETIME_OPTIONS">2026-05-18T21:56:35.286Z</span>
+                    </div>
+        <div class='details-row'>
+            <span class='details-header'>Participante interno</span>
+                        
+    
+                  
+                          
+                            <span class='details-value'>Taquia De La Cruz Sarita, Camarena Rivas Luz Vanessa</span>
+        </div>
+        <div class='details-row'>
+            <span class='details-header'>Participante externo</span>
+                        
+    
+                            
+                    <span class='details-value'>51943216589</span>
+        </div>
+        <div class='details-row'>
+            <span class='details-header'>Código de conclusión</span>
+                                    
+                            <span class='details-value'>Prog - Programado Evaluando Costo, Prog - Programado Evaluando Horario</span>
+        </div>
+    </div>
+</div>    <div class="form-group">
+        <h4 class="conversation-metrics-header">Detalles de la conversación</h4>
+        
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T16:22:10.595Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T16:22:10.595Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">## FROM CHANNEL: WHATSAPP ##</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T16:22:15.546Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T16:22:15.546Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Rely [5/18/2026 11:22 AM  GMT -5]
+Buenos d&iacute;as
+ 
+**
+
+</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T16:22:15.843Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T16:22:15.843Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">51943216589 is connected.</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T16:22:16.151Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T16:22:16.151Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">FIRST CLIENT MESSAGE:  Buenos d&iacute;as</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T16:55:55.038Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T16:55:55.038Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Consulta x favor Administraci&oacute;n semipermanente informaci&oacute;n x favor</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T18:38:04.314Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T18:38:04.314Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Taquia De La Cruz Sarita</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Hola Rely, te saluda Sarita asesor educativo del Instituto Continental, para poder continuar con la atenci&oacute;n me compartes tu nombre, Apellidos y el n&uacute;mero del DNI del postulante🙌💜</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:28:01.510Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:28:01.510Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">soy Relia condorhuaman pache</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:28:11.787Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:28:11.787Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">DNI. 42646916</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:34:58.749Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:34:58.749Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Taquia De La Cruz Sarita</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Gracias Relia</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:35:19.092Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:35:19.092Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Taquia De La Cruz Sarita</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">&quot;En la carrera t&eacute;cnica de *Administraci&oacute;n de Empresas* desarrollar&aacute;s habilidades de liderazgo, comunicaci&oacute;n, trabajo en equipo, negociaci&oacute;n, creatividad e innovaci&oacute;n, que te permitir&aacute;n gestionar con &eacute;xito una organizaci&oacute;n o emprender tu propio negocio. 📊👩🏻&zwj;💼👨🏻&zwj;💼
+
+Adjunto Plan de estudio de la carrera🤓:
+https://icontinental.edu.pe/carrera/administracion-de-empresas/</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:35:50.425Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:35:50.425Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Taquia De La Cruz Sarita</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">&quot;La Modalidad Semipresencial, ideal si trabajas y quieres seguir creciendo profesionalmente. 🚀
+
+📌 Horario disponible.
+📘 Duraci&oacute;n de la carrera: *2 a&ntilde;os y 6 meses*
+📍 Ubicaci&oacute;n presencial: Sede *Huancayo*
+✔️ 50% del programa se desarrolla de forma virtual
+⏰ Horario: 7:30 p. m. a 10:30 p. m.
+📆 3 a 4 veces por semana *(de lunes a viernes)*
+🏫 Clases presenciales (50%):
+📍 Cada 15 d&iacute;as en la sede Huancayo
+⏰ S&aacute;bados: *2:45 p. m. &ndash; 9:00 p. m.*
+⏰ Domingos: *8:00 a. m. &ndash; 2:00 p. m.*
+*&iquest;Estar&iacute;as de acuerdo con la Modalidad y horario disponible?*</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:41:41.347Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:41:41.347Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Y EL HORARIO A DISTACIA POR FAVOR</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:41:51.775Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:41:51.775Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Podria compartirme</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:51:16.520Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:51:16.520Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Taquia De La Cruz Sarita</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Claro que si</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:51:35.294Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:51:35.294Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Taquia De La Cruz Sarita</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">&quot;La Modalidad Virtual, ideal si trabajas y quieres seguir creciendo profesionalmente. 🚀
+
+📌 Horario disponible.
+📘 Duraci&oacute;n de la carrera: *2 a&ntilde;os* 
+🖥️ Clases en vivo por Google Meet, de *3 a 4 veces por semana,* entre lunes a viernes.
+⏰ Horario: de *7:30 p. m. a 10:30 p. m.*
+📹 Todas las clases quedan *grabadas*, desde el 1.&ordm; hasta el 6.&ordm; semestre.&quot;</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:53:24.993Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:53:24.993Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">ok gracias</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:53:46.330Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:53:46.330Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">los costos x favor}</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T20:55:06.683Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T20:55:06.683Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Taquia De La Cruz Sarita</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">En cual de las modalidades estudiaras?</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                          
+                                                                                            <div class="messages-message customer">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:09:10.624Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:09:10.624Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">51943216589</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">distancia seria</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:11:05.714Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:11:05.714Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Taquia De La Cruz Sarita</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Perfecto</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:13:09.251Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:13:09.251Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Camarena Rivas Luz Vanessa</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">*T&aacute;rifa regular*</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:13:09.451Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:13:09.451Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Camarena Rivas Luz Vanessa</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body"></span>
+                                                    
+        <div class="message-media-attachment-container">
+            <button class="expand-button btn btn-link" onclick="toggleElementCollapsed(this)">
+                <span>image.png</span>
+                <i class="fa fa-caret-down"></i>
+            </button>
+                            <img alt="" class="message-attachment" src="resources/image.png" />
+                    </div>
+    
+                            
+                            
+                    </div>
+                                            <div class="message-reply-wrapper">
+                     </div>
+    
+                         <div class="cards-wrapper">
+             </div>
+    
+                        <div class="cards-wrapper">
+            </div>
+    
+                    
+                                
+                                        
+                        
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:13:24.270Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:13:24.270Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Camarena Rivas Luz Vanessa</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">*Descuento hasta el 20/05*</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:13:24.469Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:13:24.469Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Camarena Rivas Luz Vanessa</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body"></span>
+                                                    
+        <div class="message-media-attachment-container">
+            <button class="expand-button btn btn-link" onclick="toggleElementCollapsed(this)">
+                <span>image.png</span>
+                <i class="fa fa-caret-down"></i>
+            </button>
+                            <img alt="" class="message-attachment" src="resources/image(1).png" />
+                    </div>
+    
+                            
+                            
+                    </div>
+                                            <div class="message-reply-wrapper">
+                     </div>
+    
+                         <div class="cards-wrapper">
+             </div>
+    
+                        <div class="cards-wrapper">
+            </div>
+    
+                    
+                                
+                                        
+                        
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:13:33.040Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:13:33.040Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Camarena Rivas Luz Vanessa</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">ademas por la prontitud de pago</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:14:02.638Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:14:02.638Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Camarena Rivas Luz Vanessa</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">Adem&aacute;s, si ya reservas tu vacante ✨ acceder&aacute;s GRATIS a 3 cursos🙌
+
+📚 Podr&aacute;s adelantar 2 cursos de tu primer ciclo + llevar Excel y Canva para Negocios 📊🎨
+
+💻 Todo 100% virtual para iniciar desde junio 😊</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:29:48.044Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:29:48.044Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Camarena Rivas Luz Vanessa</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">*&iquest;Si tienes alguna duda o consulta?, estoy aqui para apoyarte*✅</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+                                                                                                     <div class="messages-message agent">
+        <div class="message-header">
+                            <div class="message-time date" data-date="2026-05-18T21:55:46.499Z" data-format="MEDIUM_DATE_LONG_TIME_OPTIONS">2026-05-18T21:55:46.499Z</div>
+                    </div>
+        <div class="message-body">
+                        <div class="message-user-wrapper">
+            <div class="message-user-name">Camarena Rivas Luz Vanessa</div>
+                            <div class="message-type">(Privado)</div>
+                    </div>
+                <div class="wrapper">
+                                                     <div class="message-bubble">
+                        <div class="tail"></div>
+                        <span class="message-text-body">😔 Lamentablemente, no hemos recibido una respuesta de tu parte y nos encantar&iacute;a poder seguir acompa&ntilde;&aacute;ndote en tu proceso.
+
+🙏🏻 Por ello, te escribo desde mi n&uacute;mero corporativo para mantenernos en contacto y brindarte el apoyo necesario.
+
+👩🏻 Mi nombre es Luz Camarena, asesor educativo.
+📲 N&uacute;mero corporativo: +51 991 313 283
+
+💬 Cualquier duda o consulta, no dudes en comunicarte conmigo.
+💪🏻 Estar&eacute; muy atento para poder apoyarte en todo lo que necesites.</span>
+                                                    
+                            
+                            
+                    </div>
+                                    
+                    
+                    
+                    
+                                
+                                
+                                
+                    
+                    
+                    
+                    
+                                                                    
+            </div>
+        </div>
+        </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>
