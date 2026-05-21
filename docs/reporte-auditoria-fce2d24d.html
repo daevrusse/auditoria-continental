@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría · Sarita Taquia / Diego Gomez · Instituto Continental</title>
+<style>
+  :root {
+    --verde: #00b894;
+    --rojo: #e17055;
+    --amarillo: #fdcb6e;
+    --azul: #0984e3;
+    --gris: #b2bec3;
+    --oscuro: #1e272e;
+    --medio: #2d3436;
+    --claro: #f5f6fa;
+    --blanco: #ffffff;
+    --texto: #2d3436;
+    --subtexto: #636e72;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--claro); color: var(--texto); font-size: 14px; line-height: 1.6; }
+
+  /* ── PORTADA ── */
+  .portada {
+    background: linear-gradient(135deg, #1e272e 0%, #0984e3 100%);
+    color: white;
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .portada::after {
+    content: 'IC';
+    position: absolute;
+    right: -20px; top: -20px;
+    font-size: 200px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+  .portada-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; }
+  .portada-logo { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 10px; }
+  .portada-titulo { font-size: 28px; font-weight: 800; line-height: 1.2; }
+  .portada-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+  .portada-score-box {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 20px 28px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+  .score-numero { font-size: 52px; font-weight: 900; line-height: 1; color: white; }
+  .score-label { font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .score-detalle { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 8px; }
+  .portada-meta {
+    display: flex; gap: 32px; flex-wrap: wrap; margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .meta-item .label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+  .meta-item .value { font-size: 13px; font-weight: 600; color: white; margin-top: 2px; }
+
+  /* ── BARRA DE PROGRESO ── */
+  .progress-wrap { background: rgba(255,255,255,0.1); border-radius: 4px; height: 6px; margin-top: 16px; }
+  .progress-fill { height: 6px; border-radius: 4px; background: linear-gradient(90deg, #00b894, #fdcb6e); }
+
+  /* ── LAYOUT PRINCIPAL ── */
+  .main { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* ── SECCIÓN TÍTULO ── */
+  .seccion-titulo {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--subtexto);
+    margin-bottom: 16px; margin-top: 36px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .seccion-titulo::after { content: ''; flex: 1; height: 1px; background: #dfe6e9; }
+
+  /* ── ALERTA PEC ── */
+  .alerta-pec {
+    background: #fff5f5;
+    border: 1px solid #fab1a0;
+    border-left: 5px solid var(--rojo);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    margin-bottom: 8px;
+  }
+  .alerta-pec-info h3 { font-size: 15px; font-weight: 700; color: #c0392b; margin-bottom: 4px; }
+  .alerta-pec-info p { font-size: 13px; color: #c0392b; opacity: 0.8; }
+  .alerta-pec-valor { text-align: center; }
+  .alerta-pec-valor .num { font-size: 36px; font-weight: 900; color: var(--rojo); line-height: 1; }
+  .alerta-pec-valor .sub { font-size: 11px; color: var(--subtexto); margin-top: 2px; }
+  .badge-pec { background: #fab1a0; color: #c0392b; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-top: 6px; }
+
+  /* ── GRID CRITERIOS ── */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .criterio-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-left: 4px solid transparent;
+    transition: transform 0.1s;
+  }
+  .criterio-card.si  { border-left-color: var(--verde); }
+  .criterio-card.no  { border-left-color: var(--rojo); }
+  .criterio-card.na  { border-left-color: var(--gris); }
+  .criterio-num {
+    font-size: 10px; font-weight: 800; color: var(--subtexto);
+    letter-spacing: 0.5px; white-space: nowrap; padding-top: 2px;
+  }
+  .criterio-body { flex: 1; }
+  .criterio-desc { font-size: 13px; color: var(--texto); line-height: 1.4; margin-bottom: 8px; }
+  .criterio-evidencia { font-size: 11px; color: var(--subtexto); font-style: italic; line-height: 1.4; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.3px;
+  }
+  .pill-si  { background: #d5f5e3; color: #1e8449; }
+  .pill-no  { background: #fadbd8; color: #922b21; }
+  .pill-na  { background: #eaecee; color: #717d7e; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .dot-si { background: var(--verde); }
+  .dot-no { background: var(--rojo); }
+  .dot-na { background: var(--gris); }
+
+  /* ── RESUMEN BARRAS ── */
+  .resumen-card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .barra-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12px; }
+  .barra-row:last-child { margin-bottom: 0; }
+  .barra-label { width: 260px; flex-shrink: 0; color: var(--subtexto); }
+  .barra-label strong { color: var(--texto); font-size: 11px; }
+  .barra-track { flex: 1; background: #f0f2f5; border-radius: 4px; height: 8px; overflow: hidden; }
+  .barra-fill { height: 8px; border-radius: 4px; }
+  .barra-si { background: var(--verde); }
+  .barra-no { background: var(--rojo); width: 0%; }
+  .barra-na { background: var(--gris); width: 50%; }
+  .barra-val { width: 36px; text-align: right; font-weight: 700; font-size: 11px; }
+  .val-si { color: var(--verde); }
+  .val-no { color: var(--rojo); }
+  .val-na { color: var(--gris); }
+
+  /* ── FEEDBACK ── */
+  .feedback-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:640px) { .feedback-grid { grid-template-columns: 1fr; } }
+  .feedback-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .feedback-card.full { grid-column: 1 / -1; }
+  .feedback-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .feedback-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .icon-v { background: #d5f5e3; }
+  .icon-a { background: #fef9e7; }
+  .icon-c { background: #d6eaf8; }
+  .feedback-header h3 { font-size: 14px; font-weight: 700; color: var(--oscuro); }
+  .feedback-header p  { font-size: 11px; color: var(--subtexto); }
+  .feedback-item {
+    display: flex; gap: 10px; margin-bottom: 10px;
+    padding: 10px 12px; border-radius: 8px; background: #f8f9fa;
+    font-size: 13px; line-height: 1.55; color: #4a4a4a;
+  }
+  .feedback-item:last-child { margin-bottom: 0; }
+  .fi-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .fi-dot-v { background: var(--verde); }
+  .fi-dot-a { background: var(--amarillo); }
+  .fi-dot-c { background: var(--azul); }
+  .frase {
+    background: #eaf4fd;
+    border-left: 3px solid var(--azul);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #1a5276;
+    font-style: italic;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* ── RESUMEN NUMÉRICO ── */
+  .kpi-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+  .kpi-box {
+    flex: 1; min-width: 100px;
+    background: white;
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .kpi-num { font-size: 32px; font-weight: 900; line-height: 1; }
+  .kpi-label { font-size: 11px; color: var(--subtexto); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .kpi-verde { color: var(--verde); }
+  .kpi-rojo  { color: var(--rojo); }
+  .kpi-gris  { color: var(--gris); }
+  .kpi-azul  { color: var(--azul); }
+
+  /* ── JSON ── */
+  .json-card {
+    background: #1e272e;
+    border-radius: 14px;
+    padding: 24px 28px;
+    overflow-x: auto;
+  }
+  .json-header { font-size: 11px; color: #636e72; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
+  pre { font-family: 'Consolas', 'Courier New', monospace; font-size: 12px; line-height: 1.8; color: #dfe6e9; white-space: pre-wrap; }
+  .jk { color: #74b9ff; } /* key */
+  .jv-si { color: #55efc4; } /* sí */
+  .jv-no { color: #ff7675; } /* no */
+  .jv-na { color: #b2bec3; } /* n/a */
+  .jv-s  { color: #ffeaa7; } /* string */
+  .jv-n  { color: #fd79a8; } /* number */
+
+  /* ── FOOTER ── */
+  .footer { text-align: center; font-size: 11px; color: var(--gris); padding-top: 16px; border-top: 1px solid #dfe6e9; margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ PORTADA ══════════════ -->
+<div class="portada">
+  <div style="max-width:960px; margin:0 auto;">
+    <div class="portada-top">
+      <div>
+        <div class="portada-logo">Instituto Continental · Supervisión de Calidad</div>
+        <div class="portada-titulo">Reporte de Auditoría<br>de Conversación</div>
+        <div class="portada-sub">Evaluación de asesores comerciales · Canal WhatsApp</div>
+        <div class="progress-wrap" style="max-width:360px;">
+          <div class="progress-fill" style="width:73.7%"></div>
+        </div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.45); margin-top:6px;">Puntuación global: 14 de 19 criterios cumplidos</div>
+      </div>
+      <div class="portada-score-box">
+        <div class="score-numero">73.7%</div>
+        <div class="score-label">Puntuación final</div>
+        <div class="score-detalle">14 ✓ &nbsp;·&nbsp; 5 ✗ &nbsp;·&nbsp; 0 N/A</div>
+        <div style="margin-top:10px; font-size:11px; background:rgba(253,203,110,0.2); color:#fdcb6e; padding:4px 12px; border-radius:20px; font-weight:700;">Nivel: Competente</div>
+      </div>
+    </div>
+    <div class="portada-meta">
+      <div class="meta-item"><div class="label">ID Interacción</div><div class="value" style="font-size:11px;">fce2d24d-8784-4a3a-8421-2bad0e097356</div></div>
+      <div class="meta-item"><div class="label">Asesores</div><div class="value">Sarita Taquia / Diego Gomez</div></div>
+      <div class="meta-item"><div class="label">Cliente</div><div class="value">Jeferson Espinoza Lizarme</div></div>
+      <div class="meta-item"><div class="label">Fecha</div><div class="value">18–19 Mayo 2026</div></div>
+      <div class="meta-item"><div class="label">Canal</div><div class="value">WhatsApp</div></div>
+      <div class="meta-item"><div class="label">Código conclusión</div><div class="value" style="font-size:11px;">Prog · Evaluando Horario / Inactividad</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ══════════════ KPIs ══════════════ -->
+  <p class="seccion-titulo">Resumen de resultados</p>
+  <div class="kpi-row">
+    <div class="kpi-box"><div class="kpi-num kpi-azul">19</div><div class="kpi-label">Criterios evaluados</div></div>
+    <div class="kpi-box"><div class="kpi-num kpi-verde">14</div><div class="kpi-label">Cumplidos ✓</div></div>
+    <div class="kpi-box"><div class="kpi-num kpi-rojo">5</div><div class="kpi-label">No cumplidos ✗</div></div>
+    <div class="kpi-box"><div class="kpi-num kpi-gris">0</div><div class="kpi-label">No aplica</div></div>
+    <div class="kpi-box"><div class="kpi-num kpi-azul">73.7%</div><div class="kpi-label">Score global</div></div>
+  </div>
+
+  <!-- ══════════════ ALERTA PEC ══════════════ -->
+  <p class="seccion-titulo">Criterio crítico — Tiempo de respuesta PEC</p>
+  <div class="alerta-pec">
+    <div class="alerta-pec-info">
+      <h3>⚠ Tiempo de respuesta excesivo</h3>
+      <p>Primer mensaje del cliente: <strong>18/05/2026 · 15:20:59 UTC</strong></p>
+      <p>Primera respuesta del asesor (Sarita): <strong>18/05/2026 · 18:37:37 UTC</strong></p>
+      <div class="badge-pec">Límite: 30 seg · Resultado: NO CUMPLIDO</div>
+    </div>
+    <div class="alerta-pec-valor">
+      <div class="num">11,798</div>
+      <div class="sub">segundos de espera</div>
+      <div class="sub" style="margin-top:4px;">≈ 3 horas 16 minutos</div>
+    </div>
+  </div>
+
+  <!-- ══════════════ CRITERIOS ══════════════ -->
+  <p class="seccion-titulo">Evaluación de los 19 criterios</p>
+  <div class="criterios-grid">
+
+    <div class="criterio-card no">
+      <div class="criterio-num">1.1</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Atiende en los primeros 30 segundos (PEC)</div>
+          <span class="pill pill-no"><span class="dot dot-no"></span>No</span>
+        </div>
+        <div class="criterio-evidencia">Demora de 3h 16min (11,798 seg). Límite institucional: 30 seg.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.2</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Se presenta con su nombre y el del instituto</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">"Te saluda Sarita asesor educativo del Instituto Continental"</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.3</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Realiza preguntas de filtros (Carrera / modalidad)</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Preguntó lugar de procedencia, modalidad (presencial/distancia) y carrera de interés.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.4</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Presenta propuesta de valor del Instituto, Programa y Modalidad</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Mencionó 40 años de experiencia, listó carreras, compartió plan de estudios y horarios por ciclo.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.5</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Registra correctamente la información del prospecto</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Solicitó nombre, apellidos y DNI (72797124). Registró: Jeferson Espinoza Lizarme, Huancayo, Gastronomía presencial.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.6</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Brinda información de admisión y precios al prospecto</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Diego informó: inscripción S/100, matrícula S/100, 5 cuotas de S/300. Oferta 20 mayo: total S/400.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card no">
+      <div class="criterio-num">1.7</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Informa ventajas de la carrera / certificaciones Progresivas</div>
+          <span class="pill pill-no"><span class="dot dot-no"></span>No</span>
+        </div>
+        <div class="criterio-evidencia">Solo describió la carrera de forma general. No mencionó certificaciones progresivas del Instituto Continental.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.8</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Información correcta y completa de la carrera</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Informó duración (2 años 6 meses), horarios por ciclo, link al plan de estudios y duración del ciclo (16 semanas).</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.9</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Está atento a la información que brinda el prospecto</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Al saber que el cliente estudia universidad, adaptó la propuesta ofreciendo la modalidad semipresencial.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.10</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Responde acertadamente las inquietudes del aspirante</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Respondió preguntas sobre horarios, días de clase, duración del ciclo y modalidades disponibles.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.11</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Maneja objeciones del aspirante (clasifica y argumenta)</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Objeción de horario (estudia universidad) → propuso modalidad semipresencial como alternativa concreta.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card no">
+      <div class="criterio-num">1.12</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Maneja ortografía profesional (tildes, gramática, redacción)</div>
+          <span class="pill pill-no"><span class="dot dot-no"></span>No</span>
+        </div>
+        <div class="criterio-evidencia">Errores detectados: "hatsa asetiembre", "Perfecto..1", y ausencia de tildes en varios mensajes de Sarita.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.13</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Personaliza la interacción (mínimo 2 veces)</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Usó "Jeferson" al inicio, al hacer preguntas y al plantear alternativas. Más de 2 personalizaciones confirmadas.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.14</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Es amable durante toda la comunicación</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Tono cordial y paciente en toda la conversación. Mensajes de seguimiento empáticos: "Estoy a la espera para ayudarte".</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.15</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Uso adecuado de las plantillas</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Estructura de mensajes de carrera, horarios y precios sigue un formato institucional coherente y ordenado.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.16</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Mantiene estilo dinámico y empático en el chat</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Uso estratégico de emojis, mensajes cortos y directos. Diego generó urgencia con la oferta especial del 20 de mayo.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card si">
+      <div class="criterio-num">1.17</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Tipifica de manera correcta y completa</div>
+          <span class="pill pill-si"><span class="dot dot-si"></span>Sí</span>
+        </div>
+        <div class="criterio-evidencia">Código de conclusión: "Prog - Programado Evaluando Horario / Finalizado inactividad". Refleja el estado real de la interacción.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card no">
+      <div class="criterio-num">1.18</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Utiliza correctamente el speech de cierre</div>
+          <span class="pill pill-no"><span class="dot dot-no"></span>No</span>
+        </div>
+        <div class="criterio-evidencia">No hubo cierre formal. La conversación terminó por inactividad sin resumen, compromiso ni despedida estructurada.</div>
+      </div>
+    </div>
+
+    <div class="criterio-card no">
+      <div class="criterio-num">1.19</div>
+      <div class="criterio-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div class="criterio-desc">Genera agendamiento de la interacción</div>
+          <span class="pill pill-no"><span class="dot dot-no"></span>No</span>
+        </div>
+        <div class="criterio-evidencia">No se agendó una fecha/hora concreta para el siguiente contacto. Diego solo dejó su WhatsApp personal sin compromiso de seguimiento.</div>
+      </div>
+    </div>
+
+  </div><!-- /criterios-grid -->
+
+  <!-- ══════════════ BARRAS POR GRUPO ══════════════ -->
+  <p class="seccion-titulo">Desempeño por área</p>
+  <div class="resumen-card">
+    <div class="barra-row">
+      <div class="barra-label"><strong>Apertura</strong> (1.1 – 1.3)</div>
+      <div class="barra-track"><div class="barra-fill barra-si" style="width:66%"></div></div>
+      <div class="barra-val val-si">2/3</div>
+    </div>
+    <div class="barra-row">
+      <div class="barra-label"><strong>Propuesta de valor e info</strong> (1.4 – 1.8)</div>
+      <div class="barra-track"><div class="barra-fill barra-si" style="width:80%"></div></div>
+      <div class="barra-val val-si">4/5</div>
+    </div>
+    <div class="barra-row">
+      <div class="barra-label"><strong>Atención y escucha</strong> (1.9 – 1.11)</div>
+      <div class="barra-track"><div class="barra-fill barra-si" style="width:100%"></div></div>
+      <div class="barra-val val-si">3/3</div>
+    </div>
+    <div class="barra-row">
+      <div class="barra-label"><strong>Comunicación y estilo</strong> (1.12 – 1.16)</div>
+      <div class="barra-track"><div class="barra-fill barra-si" style="width:80%"></div></div>
+      <div class="barra-val val-si">4/5</div>
+    </div>
+    <div class="barra-row">
+      <div class="barra-label"><strong>Cierre y gestión</strong> (1.17 – 1.19)</div>
+      <div class="barra-track"><div class="barra-fill barra-si" style="width:33%"></div></div>
+      <div class="barra-val val-no">1/3</div>
+    </div>
+  </div>
+
+  <!-- ══════════════ FEEDBACK ══════════════ -->
+  <p class="seccion-titulo">Análisis cualitativo · Feedback</p>
+  <div class="feedback-grid">
+
+    <!-- FORTALEZAS -->
+    <div class="feedback-card">
+      <div class="feedback-header">
+        <div class="feedback-icon icon-v">✅</div>
+        <div><h3>Fortalezas</h3><p>Lo que se hizo bien en esta interacción</p></div>
+      </div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-v"></div><div><strong>Presentación institucional correcta.</strong> Sarita se identificó con nombre propio e Instituto Continental en el primer mensaje, cumpliendo el protocolo de apertura.</div></div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-v"></div><div><strong>Perfilado activo y efectivo.</strong> Preguntó lugar, modalidad y carrera antes de lanzar información. Esto evitó propuestas genéricas e irrelevantes para el cliente.</div></div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-v"></div><div><strong>Escucha activa ante objeción de horario.</strong> Al saber que el cliente estudia en la universidad, Sarita adaptó la propuesta y ofreció la modalidad semipresencial de forma proactiva.</div></div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-v"></div><div><strong>Cierre comercial con urgencia real (Diego).</strong> Presentó oferta especial del 20 de mayo con desglose de precios y llamada a la acción directa: generar código de pago al instante.</div></div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-v"></div><div><strong>Estilo dinámico y empático.</strong> Uso consistente de emojis, mensajes de seguimiento cálidos y tono positivo durante toda la conversación por ambos asesores.</div></div>
+    </div>
+
+    <!-- MEJORAS -->
+    <div class="feedback-card">
+      <div class="feedback-header">
+        <div class="feedback-icon icon-a">⚠️</div>
+        <div><h3>Oportunidades de mejora</h3><p>Puntos críticos a trabajar</p></div>
+      </div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-a"></div><div><strong>Falla crítica en PEC.</strong> El cliente esperó 3h 16min sin respuesta. Riesgo máximo de perder el lead. Este es el punto de mayor impacto negativo en la conversión.</div></div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-a"></div><div><strong>Diego no se presentó al tomar la conversación.</strong> El cambio de asesor ocurrió sin aviso. El cliente pasó de hablar con "Sarita" a recibir mensajes sin identificación, generando confusión.</div></div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-a"></div><div><strong>Errores ortográficos.</strong> "hatsa asetiembre" y "Perfecto..1" son errores evitables que reducen la percepción de profesionalismo institucional.</div></div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-a"></div><div><strong>Sin certificaciones progresivas.</strong> No se mencionaron las certificaciones progresivas de la carrera de Gastronomía, un diferenciador clave del Instituto Continental.</div></div>
+      <div class="feedback-item"><div class="fi-dot fi-dot-a"></div><div><strong>Cierre sin agendamiento.</strong> La conversación terminó por inactividad. No se propuso una fecha concreta de seguimiento ni se usó el speech de cierre institucional.</div></div>
+    </div>
+
+    <!-- ACCIONES CORRECTIVAS -->
+    <div class="feedback-card full">
+      <div class="feedback-header">
+        <div class="feedback-icon icon-c">💡</div>
+        <div><h3>Acciones correctivas</h3><p>Frases y comportamientos exactos a implementar</p></div>
+      </div>
+
+      <div class="feedback-item">
+        <div class="fi-dot fi-dot-c"></div>
+        <div>
+          <strong>Para el tiempo de respuesta (PEC):</strong> Activar un mensaje automático de bienvenida que responda en los primeros 30 segundos mientras el asesor se conecta.
+          <div class="frase">"¡Hola! 👋 Gracias por escribirnos al Instituto Continental. En un momento un asesor educativo te atenderá. ¿En qué carrera estás interesado?"</div>
+        </div>
+      </div>
+
+      <div class="feedback-item">
+        <div class="fi-dot fi-dot-c"></div>
+        <div>
+          <strong>Para la transición entre asesores:</strong> Diego debió presentarse al retomar la conversación.
+          <div class="frase">"Hola Jeferson, soy Diego Gómez, asesor educativo del Instituto Continental. Continúo atendiéndote y estoy aquí para resolver todas tus dudas sobre Gastronomía. 🎓"</div>
+        </div>
+      </div>
+
+      <div class="feedback-item">
+        <div class="fi-dot fi-dot-c"></div>
+        <div>
+          <strong>Para mencionar certificaciones progresivas:</strong> Sarita debió agregar esto al presentar la carrera.
+          <div class="frase">"Además, en Gastronomía obtendrás Certificaciones Progresivas durante la carrera, lo que te permite acreditar competencias desde el primer ciclo y mejorar tu empleabilidad antes de graduarte. 📜"</div>
+        </div>
+      </div>
+
+      <div class="feedback-item">
+        <div class="fi-dot fi-dot-c"></div>
+        <div>
+          <strong>Para el cierre y agendamiento:</strong> Antes de finalizar, Diego debió proponer un compromiso concreto.
+          <div class="frase">"Jeferson, para que no pierdas la oferta del 20 de mayo, ¿te parece si te llamo mañana a las 6pm para resolver cualquier duda y generar tu código de pago? Solo necesitas confirmarme si prefieres la mañana o la tarde. 📞"</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /feedback-grid -->
+
+  <!-- ══════════════ COMENTARIOS DEL EVALUADOR ══════════════ -->
+  <p class="seccion-titulo">Comentarios del evaluador</p>
+  <div style="background:white; border-radius:14px; padding:24px 28px; box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+    <p style="color:var(--subtexto); font-size:13px; font-style:italic;">
+      La interacción refleja asesores con buen manejo de la propuesta de valor y escucha activa, pero con fallas operativas críticas en tiempo de respuesta y en el protocolo de cierre. El área de mayor riesgo es el tramo inicial (PEC) y el tramo final (agendamiento), que son los dos puntos de mayor impacto en la conversión de leads a matriculados. Se recomienda sesión de retroalimentación individual con ambos asesores, enfocada en: (1) uso del mensaje automático de bienvenida, (2) protocolo de transición entre asesores, (3) speech de cierre institucional y técnica de agendamiento.
+    </p>
+  </div>
+
+  <!-- ══════════════ JSON ══════════════ -->
+  <p class="seccion-titulo">JSON · Formulario de auditoría</p>
+  <div class="json-card">
+    <div class="json-header">Formato para sistema de reportes · Copiar y pegar</div>
+<pre>{
+  <span class="jk">"interaccion_id"</span>: <span class="jv-s">"fce2d24d-8784-4a3a-8421-2bad0e097356"</span>,
+  <span class="jk">"asesores"</span>: <span class="jv-s">"Taquia De La Cruz Sarita / Gomez Olivera Diego Renzo"</span>,
+  <span class="jk">"cliente"</span>: <span class="jv-s">"51964110372 – Jeferson Espinoza Lizarme – DNI 72797124"</span>,
+  <span class="jk">"canal"</span>: <span class="jv-s">"WhatsApp"</span>,
+  <span class="jk">"fecha"</span>: <span class="jv-s">"2026-05-18"</span>,
+  <span class="jk">"criterio_1_1"</span>:  <span class="jv-no">"No"</span>,
+  <span class="jk">"criterio_1_2"</span>:  <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_3"</span>:  <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_4"</span>:  <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_5"</span>:  <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_6"</span>:  <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_7"</span>:  <span class="jv-no">"No"</span>,
+  <span class="jk">"criterio_1_8"</span>:  <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_9"</span>:  <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_10"</span>: <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_11"</span>: <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_12"</span>: <span class="jv-no">"No"</span>,
+  <span class="jk">"criterio_1_13"</span>: <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_14"</span>: <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_15"</span>: <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_16"</span>: <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_17"</span>: <span class="jv-si">"Sí"</span>,
+  <span class="jk">"criterio_1_18"</span>: <span class="jv-no">"No"</span>,
+  <span class="jk">"criterio_1_19"</span>: <span class="jv-no">"No"</span>,
+  <span class="jk">"puntuacion"</span>: <span class="jv-s">"14/19 (73.7%)"</span>,
+  <span class="jk">"comentarios_evaluador"</span>: <span class="jv-s">"Asesores con buen manejo de propuesta de valor y escucha activa. Fallas críticas en PEC y cierre/agendamiento. Requiere retroalimentación en: mensaje automático de bienvenida, protocolo de transición y speech de cierre institucional."</span>,
+  <span class="jk">"comentarios_feedback"</span>: <span class="jv-s">"FORTALEZAS: Presentación correcta (nombre + Instituto Continental). Perfilado activo (lugar, modalidad, carrera). Escucha activa ante objeción de horario → propuso semipresencial. Cierre con oferta especial y llamada a la acción. Estilo dinámico con emojis. OPORTUNIDADES DE MEJORA: PEC incumplido (3h 16min). Diego no se presentó al tomar la conversación. Errores ortográficos graves ('hatsa asetiembre'). No mencionó certificaciones progresivas. Sin speech de cierre ni agendamiento concreto. ACCIONES CORRECTIVAS: Activar mensaje automático de bienvenida (≤30 seg). Protocolo de presentación al cambiar asesor. Incluir certificaciones progresivas en propuesta. Usar speech de cierre y proponer fecha concreta de seguimiento."</span>
+}</pre>
+  </div>
+
+  <div class="footer">
+    Reporte generado el 21 de mayo de 2026 · Instituto Continental · Supervisión de Calidad y Ventas · auditor-calidad-continental v2.0
+  </div>
+
+</div><!-- /main -->
+</body>
+</html>
